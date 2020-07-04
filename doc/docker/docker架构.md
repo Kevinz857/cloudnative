@@ -33,25 +33,12 @@
 
 * Containers 容器，容器是一个镜像的可运行的实例，可以使用Docker REST API或者CLI来操作容器，容器的实质是进程，但与直接在宿主执行的实例进程不同，容器进程属于自己的独立的命名空间。因此容器可以拥有自己的root文件系统、自己的网络配置、自己的进程空间、甚至自己的用户ID。容器内的经常是运行在一个隔离的环境里，使用起来，就好像在一个独立于宿主的系统下操作一样。这种特性使得容器封装的应用比直接在宿主运行更加安全
 
-SERVICES
-Services allow you to scale containers across multiple Docker daemons, which all work together as a swarm with multiple managers and workers. Each member of a swarm is a Docker daemon, and all the daemons communicate using the Docker API. A service allows you to define the desired state, such as the number of replicas of the service that must be available at any given time. By default, the service is load-balanced across all worker nodes. To the consumer, the Docker service appears to be a single application. Docker Engine supports swarm mode in Docker 1.12 and higher.
 
 * Services，通过多个docker daemon进程对容器进程扩容，比如docker-swarm
 
 ## Docker 核心概念
 
 ### Namespaces
-Docker uses a technology called namespaces to provide the isolated workspace called the container. When you run a container, Docker creates a set of namespaces for that container.
-
-These namespaces provide a layer of isolation. Each aspect of a container runs in a separate namespace and its access is limited to that namespace.
-
-Docker Engine uses namespaces such as the following on Linux:
-
-The pid namespace: Process isolation (PID: Process ID).
-The net namespace: Managing network interfaces (NET: Networking).
-The ipc namespace: Managing access to IPC resources (IPC: InterProcess Communication).
-The mnt namespace: Managing filesystem mount points (MNT: Mount).
-The uts namespace: Isolating kernel and version identifiers. (UTS: Unix Timesharing System).
 &emsp;&emsp;Linux 内核2.4.19中开始陆续引用了namespace概念。目的是将某个特定的全局系统资源(global system resource)通过抽象方法使得namespace中的进程看起来拥有它们自己的隔离的全局系统资源实例
 
 命名空间是Linux内核强大的特性。每个容器都有自己的命名空间，运行在其中的应用都是在独立操作系统中运行一样。命名空间保证了容器之间彼此互不影响
