@@ -3,7 +3,7 @@
 
 * [项目介绍](README.md)
 * Docker
-    * [Docker初探](doc/docker/docker-0.md)
+    * [Docker简介](doc/docker/docker-0.md)
     * [Docker架构](doc/docker/docker-1.md)
     * [Docker网络](doc/docker/docker-2.md)
     * [Docker鼻祖之Linux-namespace](doc/docker/docker-3.md)
