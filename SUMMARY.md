@@ -10,7 +10,7 @@
     * [Namespace](doc/docker/namespace.md)
 * Kubernetes
     * [Kubernetes概述及发展历程](doc/kubernetes/kubernetes概述及发展历程.md)
-    * [Kubernetes架构及常用组件介绍](doc/kubernetes/kubernetes架构及常用组件介绍.md)
+    * [Kubernetes架构及组件介绍](doc/kubernetes/kubernetes架构及组件介绍.md)
     * [apiserver源码走读](doc/kubernetes/apiserver.md)
     * [scheduler源码走读](doc/kubernetes/scheduler.md)
     * [controller-manager源码走读](doc/kubernetes/controller-manager.md)
