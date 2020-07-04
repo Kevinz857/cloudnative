@@ -109,12 +109,12 @@ CMD ["./run.sh"]
 #### 存储驱动介绍
 
 官方文档介绍很详细
-**[AUFS](https://docs.docker.com/storage/storagedriver/aufs-driver/)** 
-**[OverlayFS](https://docs.docker.com/storage/storagedriver/overlayfs-driver/)**
-**[Devicemapper](https://docs.docker.com/storage/storagedriver/device-mapper-driver/)**
-**[Btrfs](https://docs.docker.com/storage/storagedriver/brtfs-driver/)**
-**[ZFS](https://docs.docker.com/storage/storagedriver/zfs-driver/)**
-**[VFS](https://docs.docker.com/storage/storagedriver/vfs-driver/)**
+* [AUFS](https://docs.docker.com/storage/storagedriver/aufs-driver/)
+* [OverlayFS](https://docs.docker.com/storage/storagedriver/overlayfs-driver/)
+* [Devicemapper](https://docs.docker.com/storage/storagedriver/device-mapper-driver/)
+* [Btrfs](https://docs.docker.com/storage/storagedriver/brtfs-driver/)
+* [ZFS](https://docs.docker.com/storage/storagedriver/zfs-driver/)
+* [VFS](https://docs.docker.com/storage/storagedriver/vfs-driver/)
 
 
 
