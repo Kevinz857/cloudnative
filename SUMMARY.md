@@ -18,7 +18,7 @@
     * [Informer源码分析及简单应用](doc/kubernetes/informer.md)
 
 * Etcd
-    * [etcd介绍](doc/etcd/etcd-info.md)
+    * [Etcd介绍](doc/etcd/etcd-info.md)
 * Golang
 * Python
 
