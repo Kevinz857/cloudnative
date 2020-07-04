@@ -11,8 +11,7 @@
     * [Docker常用命令](doc/docker/docker常用命令.md)
 * Kubernetes
     * [Kubernetes概述及发展历程](doc/kubernetes/kubernetes概述及发展历程.md)
-    * [Kubernetes架构](doc/kubernetes/kubernetes架构.md)
-    * [Kubernetes常用组件介绍](doc/kubernetes/kubernetes常用组件介绍.md)
+    * [Kubernetes架构及常用组件介绍](doc/kubernetes/kubernetes架构及常用组件介绍.md)
     * [源码分析-apiserver](doc/kubernetes/apiserver.md)
     * [源码分析-scheduler](doc/kubernetes/scheduler.md)
     * [源码分析-controller-manager](doc/kubernetes/controller-manager.md)

@@ -1,2 +1,0 @@
-# Kubernetes架构
-
