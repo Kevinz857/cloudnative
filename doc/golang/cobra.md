@@ -35,13 +35,16 @@ type Command struct {
 Flags用来改变commands的行为。其完全支持POSIX命令行模式和Go的flag包。这里的flag使用的是spf13/pflag包，具体可以参考Golang之使用Flag和Pflag.
 
 # 安装与导入
-* 安装
+
+> 安装
 ```shell
 go get -u github.com/spf13/cobra/cobra
 ```
-* 导入
+> 导入
 ```shell
 import "github.com/spf13/cobra"
 ```
+
 # Cobra文件结构
+
 cobra init demo
