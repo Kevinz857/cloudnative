@@ -6,7 +6,7 @@
 * Docker
     * [Docker简介](doc/docker/docker简介.md)
     * [Docker架构及核心组件](doc/docker/docker架构及核心组件.md)
-    * [Docker网络](doc/docker/docker网络.md)
+    * [Docker网络模式](doc/docker/docker网络.md)
     * [Namespace](doc/docker/namespace.md)
 * Kubernetes
     * [Kubernetes概述及发展历程](doc/kubernetes/kubernetes概述及发展历程.md)
@@ -22,7 +22,8 @@
     * [Informer源码分析及简单应用](doc/kubernetes/informer.md)
 
 * Etcd
-    * [Etcd介绍](doc/kubernetes/etcd-info.md)
+    * [Etcd介绍](doc/etcd/etcd-info.md)
 * Golang
+    * [常用库之flag](doc/golang/flag&pflag.md)
 * Python
 
