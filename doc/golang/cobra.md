@@ -2,7 +2,7 @@
 &emsp;&emsp;Cobra是一个库，其提供简单的接口来创建强大现代的CLI接口，类似于git或者go工具。同时，它也是一个应用，用来生成个人应用框架，从而开发以Cobra为基础的应用。Docker及K8s源码中都使用了Cobra做为命令行框架，这里一窥究竟方便后续撸K8s源码。
 
 # 概念
-Cobra基于三个基本概念commands,arguments和flags。其中commands代表行为，arguments代表数值，flags代表对行为的改变。
+&emsp;&emsp;Cobra基于三个基本概念commands,arguments和flags。其中commands代表行为，arguments代表数值，flags代表对行为的改变。
 
 基本模型如下：
 
@@ -87,7 +87,7 @@ func main() {
 
 ## rootCmd
 
-root（根）命令是 CLI 工具的最基本的命令，比如对于我们前面使用的 `go get URL`，其中 `go` 就是 root 命令，而 `get` 就是 `go` 这个根命令的子命令，而在 `root.go` 中就直接使用了 `cobra` 命令来初始化 `rootCmd` 结构，CLI 中的其他所有命令都将是 `rootCmd` 这个根命令的子命令了。
+&emsp;&emsp;root（根）命令是 CLI 工具的最基本的命令，比如对于我们前面使用的 `go get URL`，其中 `go` 就是 root 命令，而 `get` 就是 `go` 这个根命令的子命令，而在 `root.go` 中就直接使用了 `cobra` 命令来初始化 `rootCmd` 结构，CLI 中的其他所有命令都将是 `rootCmd` 这个根命令的子命令了。
 
 这里我们将 `cmd/root.go` 里面的 `rootCmd` 变量内部的注释去掉，并在 `Run` 函数里面加上一句 `fmt.Println("Hello Cobra CLI")`：
 
