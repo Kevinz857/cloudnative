@@ -1,5 +1,5 @@
 # Cobra介绍
-&emsp;&emsp;Cobra是一个库，其提供简单的接口来创建强大现代的CLI接口，类似于git或者go工具。同时，它也是一个应用，用来生成个人应用框架，从而开发以Cobra为基础的应用。Docker源码中使用了Cobra。
+&emsp;&emsp;Cobra是一个库，其提供简单的接口来创建强大现代的CLI接口，类似于git或者go工具。同时，它也是一个应用，用来生成个人应用框架，从而开发以Cobra为基础的应用。Docker及K8s源码中都使用了Cobra做为命令行框架，这里一窥究竟方便后续撸K8s源码。
 
 # 概念
 Cobra基于三个基本概念commands,arguments和flags。其中commands代表行为，arguments代表数值，flags代表对行为的改变。
@@ -126,7 +126,7 @@ Hello Cobra cli
 
 ## init
 
-我们知道 `init` 函数是 Golang 中初始化包的时候第一个调用的函数。在 `cmd/root.go` 中我们可以看到 `init` 函数中调用了 `cobra.OnInitialize(initConfig)`，也就是每当执行或者调用命令的时候，它都会先执行 `init` 函数中的所有函数，然后再执行 `execute` 方法。该初始化可用于加载配置文件或用于构造函数等等，这完全依赖于我们应用的实际情况。
+&emsp;&emsp;我们知道 `init` 函数是 Golang 中初始化包的时候第一个调用的函数。在 `cmd/root.go` 中我们可以看到 `init` 函数中调用了 `cobra.OnInitialize(initConfig)`，也就是每当执行或者调用命令的时候，它都会先执行 `init` 函数中的所有函数，然后再执行 `execute` 方法。该初始化可用于加载配置文件或用于构造函数等等，这完全依赖于我们应用的实际情况。
 
 在初始化函数里面 `cobra.OnInitialize(initConfig)` 调用了 `initConfig` 这个函数，所以，当 `rootCmd` 的执行方法 `RUN: func` 运行的时候，`rootCmd` 根命令就会首先运行 `initConfig` 函数，当所有的初始化函数执行完成后，才会执行 `rootCmd` 的 `RUN: func` 执行函数。
 
@@ -193,7 +193,7 @@ Hello Cobra cli
 
 ## initConfig
 
-该函数主要用于在 home 目录下面设置一个名为 `.cobrademo` 的配置文件，如果该文件存在则会使用这个配置文件。
+&emsp;&emsp;该函数主要用于在 home 目录下面设置一个名为 `.cobrademo` 的配置文件，如果该文件存在则会使用这个配置文件。
 
 ```golang
 // cmd/root.go
@@ -228,7 +228,7 @@ func initConfig() {
 
 ## 添加数据
 
-在项目根目录下面创建一个名为 add 的命令，Cobra 添加一个新的命令的方式为：cobra add <commandName>，所以我们这里直接这样执行：
+&emsp;&emsp;在项目根目录下面创建一个名为 add 的命令，Cobra 添加一个新的命令的方式为：cobra add <commandName>，所以我们这里直接这样执行：
 
 
 ```shell
@@ -380,7 +380,7 @@ Sum of floating number [1 2 3.5] is 6.500000
 ## 添加偶数
 
 
-同样在项目根目录下执行如下命令添加一个名为 `even` 的命令：
+&emsp;&emsp;同样在项目根目录下执行如下命令添加一个名为 `even` 的命令：
 
 ```shell
 # cobra add even
