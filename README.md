@@ -3,7 +3,17 @@
 
 * [项目介绍](README.md)
 
-# 本书为作者工作学习过程中的记录和积累，记录下来方便加深印象及
+# 关于本书
+&emsp;&emsp; 本书主要为工作学习过程中的记录和积累，记录下来方便加深印象及后续翻阅。目前专注于 k8s 云原生相关领域。
+
+# 内容更新
+
+* 本书github地址：https://github.com/Mathew857/cloudnative
+
+* 在线阅读：http://blog.cloudnative.cool
+
+* 个人博客：http://cloudnative.cool
+
 
 * Docker
     * [Docker简介](docker/docker简介.md)
