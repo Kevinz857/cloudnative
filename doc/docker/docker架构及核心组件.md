@@ -2,6 +2,10 @@
 
 > Docker使用了C/S体系架构，Docker客户端与Docker守护进程通信，Docker守护进程负责构建，运行和分发Docker容器。Docker客户端和守护进程可以在同一个系统上运行，也可以将Docker客户端连接到远程Docker守护进程。Docker客户端和守护进程使用REST API通过UNIX套接字或网络接口进行通信。
 
+- namespaces：实现`资源隔离`
+- cgroups：实现`资源限制`
+- aufs：`Advanced UnionFS`用于把多个文件系统联合到一个挂载点
+
 ## Docker engine
 
 
@@ -43,14 +47,15 @@
 
 命名空间是Linux内核强大的特性。每个容器都有自己的命名空间，运行在其中的应用都是在独立操作系统中运行一样。命名空间保证了容器之间彼此互不影响
 
-稍后会将namespace单独拎出来细说
-
+在docker中主要利用namespaces实现`资源隔离`
 
 ### Control groups
 
 &emsp;&emsp; Docker容器使用Linux namespace来隔离其运行环境，使得容器中的进程看起来就像在一个独立的环境中运行。但是光有运行环境隔离还不够，因为这些进程还是可以不受限制地使用系统资源，比如网络、磁盘、CPU以及内存等。关于其目的，是为了防止它占用了太多的资源而影响到其它进程；另一方面，在系统资源耗尽的时候，Linux内核会触发OOM (out of memory killer，OOM会在系统内存耗尽的情况下跳出来，选择性的干掉一些进程以求释放一些内存)这会让一些被杀掉的进程成了无辜的替死鬼，因此为了让容器中的进程更加可控，Docker使用Linux cgroups来限制容器中的进程允许使用的系统资源
 
 Linux Cgroup可以让系统中所运行任务(进程)的用户定义组分配资源—比如CPU时间、系统内存、网络带宽
+
+在docker中主要利用cgroups实现`资源限制s`
 
 
 ### Union file systems
