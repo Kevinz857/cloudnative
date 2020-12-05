@@ -9,7 +9,6 @@
     * [Docker基础技术namespaces](doc/docker/docker基础技术namespaces.md)
     * [Docker基础技术cgroups](doc/docker/docker基础技术cgroups.md)
     * [Docker网络模式](doc/docker/docker网络.md)
-    * [Namespace](doc/docker/namespace.md)
 * Kubernetes
     * [Kubernetes概述及发展历程](doc/kubernetes/kubernetes概述及发展历程.md)
     * [Kubernetes架构及组件介绍](doc/kubernetes/kubernetes架构及组件介绍.md)
