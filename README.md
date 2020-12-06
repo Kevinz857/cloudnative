@@ -21,7 +21,8 @@
     * [kubelet创建pod流程](doc/kubernetes/kubelet-create-pod.md)
     * [Client-go简单应用](doc/kubernetes/client-go.md)
     * [Informer源码分析及简单应用](doc/kubernetes/informer.md)
-
+* Operator
+    * [使用Operator-sdk开发Operator](doc/operator/使用operator-sdk开发operator.md) 
 * Etcd
     * [Etcd介绍](doc/etcd/etcd-info.md)
 * Golang
