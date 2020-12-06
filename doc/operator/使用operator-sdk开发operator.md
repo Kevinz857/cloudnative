@@ -319,7 +319,7 @@ func (r *ReconcileMathew) Reconcile(request reconcile.Request) (reconcile.Result
 
 ## 构建对应的operator image
 
-现在，代码已经写好了。我们要让它运行起来。在云平台中，组件是容器化运行，那首先我们需要创建一个image. 使用build 参数可以快速把代码打包到一个image. 当然你可以修改Dockerfile 来定制特别的需求，这里选择默认配置。构建过程如下：
+现在，代码已经写好了。我们要让它运行起来。在云平台中，组件是容器化运行，那首先我们需要创建一个image，使用build 参数可以快速把代码打包到一个image。当然你可以修改Dockerfile 来定制特别的需求，这里选择默认配置。构建过程如下：
 
 ```shell
 Mathew : ~/work/go/src/github.com/operator-mathew  🚀  ==> operator-sdk build registry.cn-beijing.aliyuncs.com/mathew-cloud/operator-mathew
@@ -372,7 +372,7 @@ latest: digest: sha256:ebd813b0b546ee31d86a04f60a0fc8a115c3ebf5855e97e2cb41ce2af
 
 ### 部署Operator
 
-我们使用YAML文件来部署这个operator到云平台，当然你也可以使用Helm. Operator-SDK 已经自动生成了所有相关的部署文件，我们只需在部署文件中配置上面这个image 即可.
+我们使用YAML文件来部署这个operator到云平台，当然你也可以使用Helm。 Operator-SDK 已经自动生成了所有相关的部署文件，我们只需在部署文件中配置上面这个image 即可。
 
 ```shell
 root@k3s:~/operator-mathew# sed -i  's@REPLACE_IMAGE@registry.cn-beijing.aliyuncs.com/mathew-cloud/operator-mathew:latest@g' deploy/operator.yaml
