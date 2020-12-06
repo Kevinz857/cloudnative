@@ -1,9 +1,9 @@
 
-# 编写一个 operator
+## 编写一个 operator
 
 > 本文来演示如何创建一个operator, 该operator会自动监管应用的pod数量。并且，把这个operator部署在k3s 集群上，让它真正运行起来。
 
-# 安装operator-sdk
+## 安装operator-sdk
 
 &emsp;&emsp; Mac 直接用 `brew` 安装即可。其它平台可以参考https://github.com/operator-framework/operator-sdk/blob/master/doc/user/install-operator-sdk.md
 
@@ -13,7 +13,7 @@ Mathew : ~  🚀  ==> operator-sdk version
 operator-sdk version: "v0.16.0", commit: "55f1446c5f472e7d8e308dcdf36d0d7fc44fc4fd", go version: "go1.14 darwin/amd64"
 ```
 
-# 新建一个operator 项目， 比如 operator-mathew
+## 新建一个operator 项目， 比如 operator-mathew
 
 > 工程目录为 $GOPATH/src/github.com/operator-mathew
 
@@ -74,10 +74,11 @@ operator-mathew/
 9 directories, 14 files
 ```
 
-# 业务逻辑代码只需关心两个方面:
+## 业务逻辑代码只需关心两个方面:
 
 1. 自定义API
-```shell
+
+```golang
 Mathew : ~/work/go/src/github.com/operator-mathew  🚀  ==> cat pkg/apis/apis.go
 package apis
 
@@ -117,9 +118,9 @@ func AddToManager(m manager.Manager) error {
 }
 ```
 
-# 开始编写逻辑代码
+## 开始编写逻辑代码
 
-## 使用`add api` 创建新的API资源
+### 使用`add api` 创建新的API资源
 
 使用 `--kind`    来指定新API的名称，这里命名为  `Mathew`
 
@@ -187,7 +188,7 @@ spec:
     storage: true
 ```
 
-## 使用`add controller`创建对应的控制器
+### 使用`add controller`创建对应的控制器
 
 ```shell
 Mathew : ~/work/go/src/github.com/operator-mathew  🚀  ==> operator-sdk add controller --api-version=mathew.cloudnative.cool/v1 --kind=Mathew
@@ -197,7 +198,7 @@ INFO[0000] Created pkg/controller/add_mathew.go
 INFO[0000] Controller generation complete.
 ```
 
-## 添加代码
+### 添加代码
 
 在资源类型文件中定义自己的资源结构。本示例的operator会监控Mathew 资源，并根据Mathew 资源中的size 域来更改对应的pod 数量。MathewStatus 结构会显示实时状态。
 
@@ -316,7 +317,7 @@ func (r *ReconcileMathew) Reconcile(request reconcile.Request) (reconcile.Result
 > 详细代码参见： https://github.com/Mathew857/operator-mathew/blob/master/pkg/controller/mathew/mathew_controller.go#L92-L162
 
 
-# 构建对应的operator image
+## 构建对应的operator image
 
 现在，代码已经写好了。我们要让它运行起来。在云平台中，组件是容器化运行，那首先我们需要创建一个image. 使用build 参数可以快速把代码打包到一个image. 当然你可以修改Dockerfile 来定制特别的需求，这里选择默认配置。构建过程如下：
 
@@ -369,7 +370,7 @@ d6ec160dc60f: Pushed
 latest: digest: sha256:ebd813b0b546ee31d86a04f60a0fc8a115c3ebf5855e97e2cb41ce2afc70da43 size: 1363
 ```
 
-## 部署Operator
+### 部署Operator
 
 我们使用YAML文件来部署这个operator到云平台，当然你也可以使用Helm. Operator-SDK 已经自动生成了所有相关的部署文件，我们只需在部署文件中配置上面这个image 即可.
 
