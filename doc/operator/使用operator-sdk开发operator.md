@@ -1,5 +1,4 @@
 
-
 # 编写一个 operator
 
 > 本文来演示如何创建一个operator, 该operator会自动监管应用的pod数量。并且，把这个operator部署在k3s 集群上，让它真正运行起来。
@@ -9,8 +8,8 @@
 &emsp;&emsp; Mac 直接用 `brew` 安装即可。其它平台可以参考https://github.com/operator-framework/operator-sdk/blob/master/doc/user/install-operator-sdk.md
 
 ```shell
-Mathew's MacBookPro: ~  🚀  ==> brew install operator-sdk
-Mathew's MacBookPro: ~  🚀  ==> operator-sdk version
+Mathew : ~  🚀  ==> brew install operator-sdk
+Mathew : ~  🚀  ==> operator-sdk version
 operator-sdk version: "v0.16.0", commit: "55f1446c5f472e7d8e308dcdf36d0d7fc44fc4fd", go version: "go1.14 darwin/amd64"
 ```
 
@@ -19,7 +18,7 @@ operator-sdk version: "v0.16.0", commit: "55f1446c5f472e7d8e308dcdf36d0d7fc44fc4
 > 工程目录为 $GOPATH/src/github.com/operator-mathew
 
 ```shell
-Mathew's MacBookPro: ~/work/go/src/github.com  🚀  ==> operator-sdk new operator-mathew
+Mathew : ~/work/go/src/github.com  🚀  ==> operator-sdk new operator-mathew
 INFO[0000] Creating new Go operator 'operator-mathew'.
 INFO[0000] Created go.mod
 INFO[0000] Created tools.go
@@ -46,7 +45,7 @@ INFO[0013] Project creation complete.
 
 
 ```shell
-Mathew's MacBookPro: ~/work/go/src/github.com  🚀  ==> tree operator-mathew/
+Mathew : ~/work/go/src/github.com  🚀  ==> tree operator-mathew/
 operator-mathew/
 ├── build
 │   ├── Dockerfile
@@ -79,7 +78,7 @@ operator-mathew/
 
 1. 自定义API
 ```shell
-Mathew's MacBookPro: ~/work/go/src/github.com/operator-mathew  🚀  ==> cat pkg/apis/apis.go
+Mathew : ~/work/go/src/github.com/operator-mathew  🚀  ==> cat pkg/apis/apis.go
 package apis
 
 import (
@@ -97,7 +96,7 @@ func AddToScheme(s *runtime.Scheme) error {
 2. 自定义控制器
 
 ```golang
-Mathew's MacBookPro: ~/work/go/src/github.com/operator-mathew  🚀  ==> cat pkg/controller/controller.go
+Mathew : ~/work/go/src/github.com/operator-mathew  🚀  ==> cat pkg/controller/controller.go
 package controller
 
 import (
@@ -125,7 +124,7 @@ func AddToManager(m manager.Manager) error {
 使用 `--kind`    来指定新API的名称，这里命名为  `Mathew`
 
 ```shell
-Mathew's MacBookPro: ~/work/go/src/github.com/operator-mathew  🚀  ==> operator-sdk add api --api-version=mathew.cloudnative.cool/v1 --kind=Mathew
+Mathew : ~/work/go/src/github.com/operator-mathew  🚀  ==> operator-sdk add api --api-version=mathew.cloudnative.cool/v1 --kind=Mathew
 INFO[0000] Generating api version mathew.cloudnative.cool/v1 for kind Mathew.
 INFO[0000] Created pkg/apis/mathew/group.go
 INFO[0002] Created pkg/apis/mathew/v1/mathew_types.go
@@ -138,12 +137,12 @@ INFO[0009] Code-generation complete.
 INFO[0009] Running CRD generator.
 INFO[0010] CRD generation complete.
 INFO[0010] API generation complete.
-```  
+```
 
 可以看到，对应的CR(customer resource)已经被operator-sdk 创建。
 
 ```yaml
-Mathew's MacBookPro: ~/work/go/src/github.com/operator-mathew  🚀  ==> cat deploy/crds/mathew.cloudnative.cool_mathews_crd.yaml
+Mathew : ~/work/go/src/github.com/operator-mathew  🚀  ==> cat deploy/crds/mathew.cloudnative.cool_mathews_crd.yaml
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
@@ -191,7 +190,7 @@ spec:
 ## 使用`add controller`创建对应的控制器
 
 ```shell
-Mathew's MacBookPro: ~/work/go/src/github.com/operator-mathew  🚀  ==> operator-sdk add controller --api-version=mathew.cloudnative.cool/v1 --kind=Mathew
+Mathew : ~/work/go/src/github.com/operator-mathew  🚀  ==> operator-sdk add controller --api-version=mathew.cloudnative.cool/v1 --kind=Mathew
 INFO[0000] Generating controller version mathew.cloudnative.cool/v1 for kind Mathew.
 INFO[0000] Created pkg/controller/mathew/mathew_controller.go
 INFO[0000] Created pkg/controller/add_mathew.go
@@ -202,8 +201,8 @@ INFO[0000] Controller generation complete.
 
 在资源类型文件中定义自己的资源结构。本示例的operator会监控Mathew 资源，并根据Mathew 资源中的size 域来更改对应的pod 数量。MathewStatus 结构会显示实时状态。
 
-```shell
-Mathew's MacBookPro: ~/work/go/src/github.com/operator-mathew  🚀  ==> less pkg/apis/mathew/v1/mathew_types.go
+```golang
+Mathew : ~/work/go/src/github.com/operator-mathew  🚀  ==> less pkg/apis/mathew/v1/mathew_types.go
 package v1
 
 import (
@@ -322,7 +321,7 @@ func (r *ReconcileMathew) Reconcile(request reconcile.Request) (reconcile.Result
 现在，代码已经写好了。我们要让它运行起来。在云平台中，组件是容器化运行，那首先我们需要创建一个image. 使用build 参数可以快速把代码打包到一个image. 当然你可以修改Dockerfile 来定制特别的需求，这里选择默认配置。构建过程如下：
 
 ```shell
-Mathew's MacBookPro: ~/work/go/src/github.com/operator-mathew  🚀  ==> operator-sdk build registry.cn-beijing.aliyuncs.com/mathew-cloud/operator-mathew
+Mathew : ~/work/go/src/github.com/operator-mathew  🚀  ==> operator-sdk build registry.cn-beijing.aliyuncs.com/mathew-cloud/operator-mathew
 INFO[0000] Building OCI image registry.cn-beijing.aliyuncs.com/mathew-cloud/operator-mathew
 Sending build context to Docker daemon  43.13MB
 Step 1/7 : FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
@@ -360,7 +359,7 @@ INFO[0004] Operator build complete.
 把该镜像推送到一个image 仓库，这里选择阿里云。
 
 ```shell
-Mathew's MacBookPro: ~/work/go/src/github.com/operator-mathew  🚀  ==> docker push registry.cn-beijing.aliyuncs.com/mathew-cloud/operator-mathew:latest
+Mathew : ~/work/go/src/github.com/operator-mathew  🚀  ==> docker push registry.cn-beijing.aliyuncs.com/mathew-cloud/operator-mathew:latest
 The push refers to repository [registry.cn-beijing.aliyuncs.com/mathew-cloud/operator-mathew]
 005f0a80dddf: Pushed
 d1b6429f25ef: Pushed
